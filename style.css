@@ -17,7 +17,7 @@ position: relative;
 overflow-x: hidden;
 }
 
-/* تنسيق وتوزيع أوراق الشجر السبعة داخل الحاوية البيضاء */
+/* تنسيق الحاوية الرئيسية */
 .mobile-wrapper {
 width: 100%;
 max-width: 420px;
@@ -30,11 +30,12 @@ flex-direction: column;
 gap: 22px;
 border: 1.5px solid #e5e7eb;
 position: relative;
-overflow: hidden; /* <--- هذه الخاصية هي السر لحبس الأوراق وتوزيعها جوا الصندوق الأبيض */
+overflow: hidden;
 z-index: 1;
+height: auto; /* مرونة كاملة لتستوعب النصوص بدون Overflow */
 }
 
-
+/* أوراق الشجر بالخلفية */
 .inner-leaf {
 position: absolute;
 color: rgba(202, 180, 73, 0.12);
@@ -42,7 +43,6 @@ z-index: 0;
 pointer-events: none;
 }
 
-/* توزيع الأوراق السبعة بمقاسات وإحداثيات مريحة وموزعة */
 .inner-leaf.leaf-1 { top: 5%; left: 8%; font-size: 35px; transform: rotate(20deg); }
 .inner-leaf.leaf-2 { top: 22%; right: 6%; font-size: 40px; transform: rotate(-35deg); color: rgba(115, 125, 138, 0.1); }
 .inner-leaf.leaf-3 { top: 40%; left: 7%; font-size: 32px; transform: rotate(45deg); }
@@ -51,13 +51,12 @@ pointer-events: none;
 .inner-leaf.leaf-6 { top: 90%; right: 12%; font-size: 35px; transform: rotate(-50deg); }
 .inner-leaf.leaf-7 { top: 15%; left: 48%; font-size: 30px; transform: rotate(15deg); color: rgba(115, 125, 138, 0.08); }
 
-
-/* التأكد من بقاء العناصر والمحتوى فوق الأوراق بوضوح تام */
 .profile-header, .about-section, .packages-section, .links-section, .secondary-preview, .site-footer {
 position: relative;
 z-index: 1;
 }
 
+/* الهيدر */
 .profile-header {
 text-align: center;
 display: flex;
@@ -98,30 +97,139 @@ font-weight: 700;
 font-style: italic;
 }
 
-/* نبذة عني */
+/* قسم عني (تنسيق مخصص للنص الطويل والفلسفة) */
 .about-section {
 background-color: #fafafa;
 border: 1.5px solid #eef2f6;
-padding: 16px 18px;
-border-radius: 16px;
-text-align: center;
-}
-
-.about-text {
-font-size: 14px;
-color: #374151;
-line-height: 1.6;
-font-weight: 600;
+padding: 20px 18px;
+border-radius: 18px;
+text-align: right;
 }
 
 .section-title {
-font-size: 15px;
+font-size: 16px;
 font-weight: 700;
 color: #374151;
-margin-bottom: 12px;
+margin-bottom: 14px;
 display: flex;
 align-items: center;
 gap: 8px;
+}
+
+.about-content {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+
+.about-highlight {
+font-size: 15px;
+font-weight: 800;
+color: #854d0e;
+background: #fef9c3;
+padding: 10px 14px;
+border-radius: 10px;
+border-right: 4px solid #eab308;
+line-height: 1.5;
+}
+
+.about-question {
+font-size: 14px;
+color: #1f2937;
+background: #f3f4f6;
+padding: 10px;
+border-radius: 8px;
+line-height: 1.5;
+}
+
+.about-text {
+font-size: 13.5px;
+color: #374151;
+line-height: 1.7;
+font-weight: 600;
+}
+
+/* بوكس الفلسفة */
+.philosophy-box {
+margin-top: 10px;
+background: #ffffff;
+border: 1.5px solid #fef08a;
+padding: 16px;
+border-radius: 14px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+box-shadow: 0 4px 12px rgba(234, 179, 8, 0.05);
+}
+
+.philosophy-title {
+font-size: 14.5px;
+font-weight: 800;
+color: #713f12;
+display: flex;
+align-items: center;
+gap: 6px;
+}
+
+.philosophy-quote {
+font-size: 14px;
+font-weight: 700;
+color: #854d0e;
+font-style: italic;
+line-height: 1.5;
+}
+
+.philosophy-text {
+font-size: 13px;
+color: #4b5563;
+line-height: 1.6;
+}
+
+.philosophy-list {
+list-style: none;
+display: flex;
+flex-direction: column;
+gap: 6px;
+margin: 4px 0;
+}
+
+.philosophy-list li {
+font-size: 13px;
+font-weight: 700;
+color: #374151;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+.philosophy-list li i {
+color: #eab308;
+font-size: 12px;
+}
+
+.philosophy-footer {
+font-size: 12.5px;
+color: #6b7280;
+line-height: 1.6;
+border-top: 1px dashed #e5e7eb;
+padding-top: 8px;
+}
+
+.philosophy-callout {
+font-size: 13.5px;
+font-weight: 800;
+color: #111827;
+text-align: center;
+margin-top: 4px;
+}
+
+/* قسم الباقات */
+.packages-intro {
+font-size: 13px;
+color: #4b5563;
+line-height: 1.6;
+margin-bottom: 14px;
+font-weight: 600;
 }
 
 .packages-grid {
@@ -135,7 +243,6 @@ text-decoration: none;
 display: block;
 }
 
-/* بوكسات الباقات (رمادي فاتح وأصفر فاتح هادئ) */
 .package-card {
 background-color: #f8f9fa;
 border: 1.5px solid #d1d5db;
@@ -153,31 +260,41 @@ border-color: #eab308;
 box-shadow: 0 6px 15px rgba(234, 179, 8, 0.08);
 }
 
-.package-header-row {
-display: flex;
-justify-content: space-between;
-align-items: center;
-}
-
 .package-header-row h3 {
-font-size: 16px;
-font-weight: 700;
+font-size: 15.5px;
+font-weight: 800;
 color: #1f2937;
 }
 
-.price {
-font-size: 15px;
-font-weight: 700;
-color: #991b1b;
-background: #fee2e2;
-padding: 3px 10px;
-border-radius: 8px;
+.package-desc {
+font-size: 13px;
+color: #4b5563;
+line-height: 1.6;
+font-weight: 600;
 }
 
-.package-desc {
+.packages-footer-callout {
+margin-top: 16px;
+background: #fefce8;
+border: 1px solid #fef08a;
+padding: 14px;
+border-radius: 12px;
+text-align: center;
+display: flex;
+flex-direction: column;
+gap: 6px;
+}
+
+.callout-main {
 font-size: 13.5px;
-color: #6b7280;
-line-height: 1.5;
+font-weight: 800;
+color: #713f12;
+}
+
+.callout-sub {
+font-size: 12.5px;
+font-weight: 700;
+color: #854d0e;
 }
 
 /* أزرار الحجز */
@@ -192,7 +309,7 @@ background-color: #e5e7eb !important;
 color: #1f2937 !important;
 padding: 12px !important;
 border-radius: 12px !important;
-font-size: 14px !important;
+font-size: 13.5px !important;
 font-weight: 700 !important;
 margin-top: 6px !important;
 text-decoration: none !important;
@@ -286,26 +403,17 @@ color: #9ca3af;
 margin-top: 5px;
 }
 
-/* تنسيق الأشكال اللي برا الصندوق باللون الأصفر الخفيف */
+/* خلفية الخارجية */
 .leaf-bg-shape {
 position: absolute;
-color: rgba(234, 179, 8, 0.18); /* لون أصفر خفيف وراقي جداً بالخلفية */
+color: rgba(234, 179, 8, 0.18);
 z-index: 0;
 pointer-events: none;
 }
 
-/* توزيع الأشكال برا الصندوق الأبيض بشكل فني */
 .leaf-bg-shape.leaf-1 { top: 10%; left: 8%; font-size: 55px; transform: rotate(-15deg); }
-.leaf-bg-shape.leaf-2 { top: 25%l; right: 7%; font-size: 60px; transform: rotate(25deg); color: rgba(202, 138, 4, 0.15); }
+.leaf-bg-shape.leaf-2 { top: 25%; right: 7%; font-size: 60px; transform: rotate(25deg); color: rgba(202, 138, 4, 0.15); }
 .leaf-bg-shape.leaf-3 { top: 60%; left: 5%; font-size: 50px; transform: rotate(40deg); }
 .leaf-bg-shape.leaf-4 { top: 75%; right: 8%; font-size: 65px; transform: rotate(-30deg); }
 .leaf-bg-shape.leaf-5 { top: 40%; left: 12%; font-size: 45px; transform: rotate(10deg); color: rgba(202, 138, 4, 0.12); }
 .leaf-bg-shape.leaf-6 { top: 88%; left: 20%; font-size: 50px; transform: rotate(-45deg); }
-
-/* التأكد أن الجسم (body) بيدعم العناصر المطلقة بالخلفية */
-body {
-position: relative;
-overflow-x: hidden;
-background-color: #f7f8f6;
-}
-
